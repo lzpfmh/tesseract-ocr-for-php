@@ -70,6 +70,7 @@ class TesseractOCR
     public function __construct($image)
     {
         $this->image = $image;
+        return $this;
     }
 
     /**
@@ -256,7 +257,7 @@ class TesseractOCR
      */
     private function buildPsmParam()
     {
-        return $this->psm ? ' -psm '.$this->psm : '';
+        return is_null($this->psm) ? '' : ' -psm '.$this->psm;
     }
 
     /**
